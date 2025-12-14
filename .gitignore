@@ -1,0 +1,74 @@
+# compiled output
+/dist
+/node_modules
+/build
+/uploads
+/upload
+/assets
+/database
+./database/
+/cspell.json
+/*.sqlite
+/public/profile-picture/*
+/go.md
+go.sum
+
+
+# dotenv environment variable files
+.env
+.env.development
+.env.development.local
+.env.production.local
+.env.local
+.env.test.local
+.env.test
+.*.env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+./*.log
+app.log
+
+# OS
+.DS_Store
+
+# Tests
+/coverage
+/.nyc_output
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+/.vscode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# temp directory
+.temp
+.tmp
+/temp
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json

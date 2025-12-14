@@ -1,0 +1,29 @@
+linters:
+  disable:
+    # - errcheck
+linters-settings:
+  golint:
+    disable:
+      - ST1000
+      - ST1020
+      - ST1003
+
+  staticcheck:
+    checks:
+      # Disable specific staticcheck rules by prefixing with "-"
+      - "-ST1000"
+      - "-ST1020"
+      - "-ST1003"
+  revive:
+    rules:
+      - name: var-naming
+        disabled: true
+
+linters:
+  enable:
+    - staticcheck
+    - govet
+    - gofmt
+    - revive
+  disable:
+    - golint # Deprecated and replaced by revive/staticcheck
