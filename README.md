@@ -317,10 +317,10 @@ golangci-lint run
 goose create create_user sql
 
 # Run migrations
-goose -dir migrations postgres "postgres://postgres:lol@localhost:5432/postgres?sslmode=disable" up
+goose -dir migrations postgres "postgres://postgres:PASSWORD@localhost:5432/postgres?sslmode=disable" up
 
 # Rollback
-goose -dir migrations postgres "postgres://postgres:lol@localhost:5432/postgres?sslmode=disable" down
+goose -dir migrations postgres "postgres://postgres:PASSWORD@localhost:5432/postgres?sslmode=disable" down
 ```
 
 ---
