@@ -277,12 +277,11 @@ POST   /api/account/profile-picture      # Upload profile picture
 ### Movies
 
 ```
-GET    /api/v1/movies/random             # Get random movies
-GET    /api/v1/movies/top                # Get top-rated movies
-GET    /api/v1/movies/:id                # Get movie details
-GET    /api/cast                         # Get movie genres
-GET    /api/v1/movies/:id/cast           # Get movie cast
-POST   /api/movies/search                # Search Movie
+GET    /api/movies/random             # Get random movies
+GET    /api/movies/top                # Get top-rated movies
+GET    /api/movies/:id                # Get movie details
+GET    /api/v1/movies/:id/cast        # Get movie cast
+POST   /api/movies/search             # Search Movie
 ```
 
 ### Watchlist & Favorites
