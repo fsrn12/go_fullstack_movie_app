@@ -314,13 +314,13 @@ golangci-lint run
 
 ```bash
 # Create new migration
-migrate create -ext sql -dir migrations -seq migration_name
+goose create create_user sql
 
 # Run migrations
-migrate -path ./migrations -database "postgres://..." up
+goose -dir migrations postgres "postgres://postgres:lol@localhost:5432/postgres?sslmode=disable" up
 
 # Rollback
-migrate -path ./migrations -database "postgres://..." down 1
+goose -dir migrations postgres "postgres://postgres:lol@localhost:5432/postgres?sslmode=disable" down
 ```
 
 ---
