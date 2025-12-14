@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "Adventure"
+  },
+  {
+    "id": 2,
+    "name": "Action"
+  },
+  {
+    "id": 3,
+    "name": "Thriller"
+  },
+  {
+    "id": 4,
+    "name": "Crime"
+  },
+  {
+    "id": 6,
+    "name": "Fantasy"
+  },
+  {
+    "id": 11,
+    "name": "Family"
+  },
+  {
+    "id": 18,
+    "name": "Science Fiction"
+  },
+  {
+    "id": 25,
+    "name": "Animation"
+  },
+  {
+    "id": 26,
+    "name": "Western"
+  },
+  {
+    "id": 35,
+    "name": "Comedy"
+  },
+  {
+    "id": 58,
+    "name": "Drama"
+  },
+  {
+    "id": 76,
+    "name": "Romance"
+  },
+  {
+    "id": 118,
+    "name": "Horror"
+  },
+  {
+    "id": 264,
+    "name": "Mystery"
+  },
+  {
+    "id": 346,
+    "name": "History"
+  },
+  {
+    "id": 350,
+    "name": "War"
+  },
+  {
+    "id": 868,
+    "name": "Music"
+  },
+  {
+    "id": 1545,
+    "name": "Documentary"
+  },
+  {
+    "id": 6323,
+    "name": "Foreign"
+  },
+  {
+    "id": 8892,
+    "name": "TV Movie"
+  }
+]

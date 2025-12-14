@@ -10,6 +10,7 @@
 /cspell.json
 /*.sqlite
 /public/profile-picture/*
+/import/*.sql
 /go.md
 go.sum
 

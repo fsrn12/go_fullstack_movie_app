@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Charset and Viewport -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <!-- Base URL -->
+    <base href="/" />
+
+    <meta
+      name="description"
+      content="Multipass is the ultimate movie companion app. Watch trailers, read reviews, and check showtimes. Cinema experiences reimagined." />
+    <meta
+      name="keywords"
+      content="movies, trailers, reviews, showtimes, cinema app, entertainment, Multipass" />
+    <meta name="author" content="Multipass Team" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.multipass.com/" />
+
+    <!-- Favicon and Manifest -->
+    <link
+      rel="shortcut icon"
+      href="images/multipass-icon.png"
+      type="image/x-icon" />
+    <link rel="manifest" href="./scripts/app.webmanifest" />
+
+    <!-- Styles -->
+    <!-- <link rel="stylesheet" href="./styles.css" /> -->
+
+    <!-- Theme Color for Mobile Browsers -->
+    <meta name="theme-color" content="#0B6623" />
+
+    <!-- Open Graph for Facebook, LinkedIn -->
+    <meta
+      property="og:title"
+      content="Multipass – Discover Trailers, Reviews & Showtimes" />
+    <meta
+      property="og:description"
+      content="The ultimate app for movie lovers. Explore new releases, trailers, showtimes, and more!" />
+    <meta
+      property="og:image"
+      content="https://www.multipass.com/images/og-image.png" />
+    <meta property="og:url" content="https://www.multipass.com/" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Multipass – Discover Trailers, Reviews & Showtimes" />
+    <meta
+      name="twitter:description"
+      content="Explore the latest movies, watch trailers, read reviews, and never miss a showtime." />
+    <meta
+      name="twitter:image"
+      content="https://www.multipass.com/images/og-image.png" />
+    <meta name="twitter:creator" content="@MultipassApp" />
+
+    <!-- Apple PWA Support -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Multipass" />
+    <link rel="apple-touch-icon" href="images/icon-192.png" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Multipass",
+        "url": "https://www.multipass.com/",
+        "description": "Discover the best movies, trailers, reviews, and showtimes. Your personal cinema assistant.",
+        "applicationCategory": "EntertainmentApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Best experienced in modern browsers.",
+        "image": "https://www.multipass.com/images/og-image.png",
+        "author": {
+          "@type": "Organization",
+          "name": "Multipass"
+        }
+      }
+    </script>
+    <!-- WEBAUTHN -->
+    <script
+      src="https://unpkg.com/@simplewebauthn/browser/dist/bundle/index.umd.min.js"
+      defer></script>
+    <link rel="stylesheet" href="./app.css" />
+    <!-- Title and Description -->
+    <title>Multipass – Discover Trailers, Reviews & Showtimes</title>
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <header class="main__header">
+      <h1 class="nav__logo">
+        <a href="/" class="navlink"
+          ><img src="./images/multipass-logo.png" alt="multipass" height="40"
+        /></a>
+      </h1>
+
+      <!-- NAV SEARCH -->
+      <div role="search form">
+        <form onsubmit="app.search(event)">
+          <input type="search" id="searchbar" placeholder="search movie..." />
+        </form>
+      </div>
+
+      <!-- NAV LINKS -->
+      <nav>
+        <ul>
+          <li><a href="/" class="navlink">Movies</a></li>
+          <li><a href="/account/favorites" class="navlink">Favorites</a></li>
+          <li><a href="/account/watchlist" class="navlink">Watchlist</a></li>
+          <li><a href="/account" class="navlink">My Account</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main></main>
+
+    <!-- ANIMATED LOADERS -->
+    <!-- <div
+      id="global-loading-overlay"
+      style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      ">
+      <div
+        style="
+          background: rgba(0, 0, 0, 0.8);
+          padding: 30px 40px;
+          border-radius: 10px;
+          text-align: center;
+          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+        ">
+        <div
+          class="spinner-border"
+          style="
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+          "></div>
+        <p
+          id="global-loading-message"
+          style="margin-top: 15px; font-size: 1.1em; color: #f0f0f0"></p>
+      </div>
+    </div> -->
+
+    <div class="modal glass-effect" id="alertModal" style="display: none">
+      <div class="modal-content">
+        <h3 id="alertModalTitle" class="modal-title"></h3>
+        <p id="alertModalMessage" class="modal-message"></p>
+        <button id="alertModalCloseBtn" class="modal-button">OK</button>
+      </div>
+    </div>
+
+    <!-- ALERT -->
+    <dialog id="alert-modal">
+      <h3>Error</h3>
+      <p>There was an error loading the page</p>
+      <button onclick="app.closeError()">OK</button>
+    </dialog>
+
+    <!-- TEMPLATES -->
+    <!-- HOME PAGE -->
+    <template id="template-home">
+      <section class="vertical-scroll" id="top-10">
+        <h2>Top 10 of the week</h2>
+        <ul></ul>
+        <!-- <ul>
+        +9+
+        </ul> -->
+      </section>
+      <section class="vertical-scroll" id="random">
+        <h2>New arrivals</h2>
+        <ul></ul>
+        <!-- <ul>
+          <animated-loading
+            data-elements="5"
+            data-width="150px"
+            data-height="220px"
+            1>
+          </animated-loading>
+        </ul> -->
+      </section>
+    </template>
+
+    <!-- MOVIES -->
+    <template id="template-movies">
+      <section>
+        <div id="search-header">
+          <h2></h2>
+          <section id="filters">
+            <select
+              name="filter"
+              id="filter"
+              onchange="app.searchFilterChange(this.value)">
+              <option>Filter by Genre</option>
+            </select>
+            <select
+              name="order"
+              id="order"
+              onchange="app.searchOrderChange(this.value)">
+              <option value="popularity">Sort by Popularity</option>
+              <option value="score">Sort by Score</option>
+              <option value="date">Sort by Date</option>
+              <option value="name">Sort by Name</option>
+            </select>
+          </section>
+        </div>
+        <ul id="movies-result">
+          <animated-loading
+            data-elements="5"
+            data-width="150px"
+            data-height="220px"
+            1>
+          </animated-loading>
+        </ul>
+      </section>
+    </template>
+
+    <!-- REGISTER -->
+    <template id="template-register">
+      <section class="glass-effect" aria-labelledby="register-heading">
+        <h2 id="register-heading">Register</h2>
+
+        <form onsubmit="app.register(event)" novalidate>
+          <div>
+            <label for="register-name"
+              >Full Name <span aria-hidden="true">*</span></label
+            >
+            <input
+              type="text"
+              id="register-name"
+              name="name"
+              autocomplete="name"
+              required />
+          </div>
+
+          <div>
+            <label for="register-email"
+              >Email Address <span aria-hidden="true">*</span></label
+            >
+            <input
+              type="email"
+              id="register-email"
+              name="email"
+              autocomplete="email"
+              required />
+          </div>
+
+          <div>
+            <label for="register-password"
+              >Password <span aria-hidden="true">*</span></label
+            >
+            <input
+              type="password"
+              id="register-password"
+              name="password"
+              autocomplete="new-password"
+              required
+              minlength="8" />
+          </div>
+
+          <div>
+            <label for="register-password-confirmation"
+              >Confirm Password <span aria-hidden="true">*</span></label
+            >
+            <input
+              type="password"
+              id="register-password-confirmation"
+              name="password-confirmation"
+              required />
+          </div>
+
+          <button type="submit">Register</button>
+
+          <p>
+            Already have an account? <a href="/account/login">Login here</a>.
+          </p>
+        </form>
+      </section>
+    </template>
+
+    <!-- LOGIN -->
+    <template id="template-login">
+      <section class="glass-effect" aria-labelledby="login-heading">
+        <h2 id="login-heading">Login</h2>
+
+        <form onsubmit="app.login(event)" novalidate>
+          <div>
+            <label for="login-email"
+              >Email Address <span aria-hidden="true">*</span></label
+            >
+            <input
+              type="email"
+              id="login-email"
+              name="login-email"
+              autocomplete="email webauthn"
+              required />
+          </div>
+
+          <div>
+            <label for="login-password"
+              >Password <span aria-hidden="true">*</span></label
+            >
+            <input
+              type="password"
+              id="login-password"
+              name="login-password"
+              autocomplete="current-password" />
+          </div>
+
+          <div>
+            <button type="submit">Login</button>
+            <button type="button" onclick="app.loginWithPasskey()">
+              Login with Passkey
+            </button>
+          </div>
+
+          <p>
+            Don’t have an account?
+            <a href="/account/register">Register here</a>.
+          </p>
+        </form>
+      </section>
+    </template>
+
+    <!-- USER ACCOUNT -->
+    <template id="template-account">
+      <section id="account" class="glass-effect">
+        <article class="user__details">
+          <h2 id="welcome-message">
+            Welcome, <span id="user-name">user</span>
+          </h2>
+          <div class="profile-picture-container">
+            <img
+              id="profile-picture-display"
+              alt="Profile Picture"
+              class="profile-avatar" />
+            <input
+              type="file"
+              id="profile-picture-upload"
+              accept="image/*"
+              style="display: none" />
+            <button id="upload-button" class="btn">Change Picture</button>
+            <button id="save-picture-button" class="btn" style="display: none">
+              Save Picture
+            </button>
+            <button
+              id="cancel-picture-button"
+              class="btn"
+              style="display: none">
+              Cancel
+            </button>
+          </div>
+        </article>
+        <div class="userList__cta">
+          <button onclick="app.Router.go('/account/favorites')">
+            My Favorites
+          </button>
+          <button onclick="app.Router.go('/account/watchlist')">
+            My Watchlist
+          </button>
+        </div>
+        <button onclick="app.addNewPasskey()">
+          Add New Passkey for Effortless Login
+        </button>
+        <button onclick="app.logout()">Logout</button>
+      </section>
+    </template>
+
+    <!-- COLLECTION -->
+    <template id="template-collection">
+      <section id="collection">
+        <ul id="movies-result">
+          <animated-loading
+            data-elements="5"
+            data-width="150px"
+            data-height="220px">
+          </animated-loading>
+        </ul>
+      </section>
+    </template>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>
+        <sup>&copy;</sup> <span id="year"></span> Multipass - All right reserved
+      </p>
+    </footer>
+
+    <!-- SCRIPT -->
+    <script type="application/JavaScript">
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+    <script defer type="module" src="./main.js"></script>
+  </body>
+</html>

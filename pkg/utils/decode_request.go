@@ -78,9 +78,3 @@ func DecodeRequest[T any](w http.ResponseWriter, r *http.Request, requestType st
 	// Successfully decoded the request body
 	return &req, nil
 }
-
-// var req RegisterRequest
-// if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-// }
-
-// later matching generic response encoder

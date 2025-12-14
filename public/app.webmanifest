@@ -1,0 +1,37 @@
+{
+  "name": "Multipass",
+  "short_name": "Multipass",
+  "lang": "en",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "browser",
+  "orientation": "portrait",
+  "theme_color": "#0B6623",
+  "background_color": "#56bce8",
+  "description": "Discover the latest movie trailers, read expert and user reviews, and check showtimes near you with Multipass—the comprehensive app for movie enthusiasts.",
+  "categories": ["entertainment", "movies", "media", "reviews"],
+  "icons": [
+    {
+      "src": "images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "images/screenshot1.png",
+      "sizes": "640x480",
+      "type": "image/png"
+    },
+    {
+      "src": "images/screenshot2.png",
+      "sizes": "1280x720",
+      "type": "image/png"
+    }
+  ]
+}
